@@ -1,14 +1,21 @@
 clear; clc; close all
 
+%% Load image
 I = load_image('zebra-camo.jpg');
-
-
 figure, imshow(I);
 
-I_comp = im_compress(I, 5000, 'all');
 
+%% DCT Compress all
+I_comp = im_compress(I, 10000, 'all');
 figure, imshow(I_comp);
 
-I_comp = im_compress(I, 5, 'block');
+I_rec = im_uncompress(I);
+figure, imshow(I_rec);
 
+
+%% DCT Compress block
+I_comp = im_compress(I, 25, 'block');
 figure, imshow(I_comp);
+
+I_rec = im_uncompress(I);
+figure, imshow(I_rec);
