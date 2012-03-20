@@ -1,6 +1,6 @@
 function [ I_out ] = im_compress( I_in, k, type )
 %IM_COMPRESS compresses an image using the DCT
-
+fprintf('Compressing Image by keeping %d coefficients from %s coefficients\n', k, type); 
 %% Initialize
 I_out = zeros(size(I_in));
 
@@ -21,8 +21,8 @@ nz_before = nnz(I_out);
 fprintf('Nonzero before:    %d\n', nz_before);
 
 if strcmp(type, 'all')
-
     I_out = threshold(I_out, k);
+
 elseif strcmp(type, 'block')
     for i = 0:x_wins-1
         for j = 0:y_wins-1
@@ -36,7 +36,7 @@ end
 nz_after = nnz(I_out);
 fprintf('Nonzero after:     %d\n', nz_after);
 fprintf('Compression Ratio: %f%% \n', nz_after/nz_before*100);
-fprintf('Space Savings:     %f%% \n', (1-nz_after/nz_before)*100);
+fprintf('Space Savings:     %f%% \n\n', (1-nz_after/nz_before)*100);
 
 end
 

@@ -1,11 +1,11 @@
 function [ I_out ] = threshold( I, k )
 %THRESHOLD Keep the k largest elements of I
 
-    sorted = sort(I(:), 'descend');
-    thresh = sorted(k+1);
+I_out = zeros(size(I));
+[sorted, indicies] = sort(abs(I(:)), 'descend');
 
-    I_out = wthresh(I, 'h', thresh);
-
-
+for i = 1:k
+     I_out(indicies(i)) = I(indicies(i));
+end
 end
 

@@ -1,21 +1,18 @@
 clear; clc; close all
 
+figures_dir = 'figures';
+image_dir   = 'images';
+
+
 %% Load image
-I = load_image('zebra-camo.jpg');
+image_file = 'zebra-camo.jpg';
+[img_name, img_ext] = parse_filename(image_file);
+I = load_image(image_file);
+[rows, cols] = size(I);
 figure, imshow(I);
 
+%% Run DCT
+DCT_script
 
-%% DCT Compress all
-I_comp = im_compress(I, 10000, 'all');
-figure, imshow(I_comp);
+%% Run Wavelet
 
-I_rec = im_uncompress(I);
-figure, imshow(I_rec);
-
-
-%% DCT Compress block
-I_comp = im_compress(I, 25, 'block');
-figure, imshow(I_comp);
-
-I_rec = im_uncompress(I);
-figure, imshow(I_rec);
