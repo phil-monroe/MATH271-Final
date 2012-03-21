@@ -28,6 +28,13 @@ plot(1:step:N_ks*step, errors);
 fname = strcat(img_name, '_', 'DCT_compress_all');
 print(h, '-depsc2', '-tiff', filename(figures_dir, fname, 'eps'));
 
+% Plot to combined plot
+h = figure(1);
+hold all;
+plot(1:step:N_ks*step, errors);
+hold off;
+labels = strvcat(labels, 'DCT All');
+
 
 %% DCT Compress Blocks
 N_ks = 63;
@@ -58,4 +65,9 @@ plot(1:N_ks, errors);
 fname = strcat(img_name, '_', 'DCT_compress_blocks');
 print(h, '-depsc2', '-tiff', filename(figures_dir, fname, 'eps'))
 
-% wavelet_compress(I, wname, par);
+% Plot to combined plot
+% h = figure(1);
+% hold on;
+% plot(1:step:N_ks*step, errors);
+% hold off;
+% labels = strvcat(labels, 'DCT Block');
