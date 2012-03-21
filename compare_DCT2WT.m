@@ -10,7 +10,7 @@ DCT_script
 %% Wavelet compress all
 for i=1:length(wnames(:,1))
     wname = strtrim(wnames(i,:));
-    level = 3;
+    level = 4;
     wavelet_script
 end
 

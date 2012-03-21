@@ -1,5 +1,5 @@
 step = 1000;
-N_ks = 50;
+N_ks = 30;
 errors = zeros(1, N_ks);
 
 for i= 1:N_ks
