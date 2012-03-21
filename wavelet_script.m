@@ -3,9 +3,9 @@ N_ks = 30;
 errors = zeros(1, N_ks);
 
 for i= 1:N_ks
-    fprintf('Compressing Image using %s wavelet by keeping %d coefficients\n', wname, k); 
     % Coefficients to keep
     k = i*step;
+    fprintf('Compressing Image using %s wavelet by keeping %d coefficients\n', wname, k); 
     
     % Compress and decompress
     [C, S] = wavedec2(I, level, wname);

@@ -4,8 +4,7 @@ clear; clc; close all
 figures_dir = 'figures';
 image_dir   = 'images';
 
-% files  = strvcat('zebra-camo.jpg', 'brickwork-texture.jpg', 'lenna.png', 'mandril.jpg', 'obama.jpg', 'ocean.jpeg', 'octocat.jpg', 'tux-cartoon.png', 'zebra-camo.jpg');
-files  = strvcat('zebra-camo.jpg');
+files  = strvcat('zebra-camo.jpg', 'brickwork-texture.jpg', 'lenna.png', 'mandril.jpg', 'obama.jpg', 'ocean.jpeg', 'octocat.jpg', 'tux-cartoon.png');
 wnames = strvcat('haar', 'db8', 'sym8', 'coif5');
 labels = [];
 
