@@ -1,6 +1,6 @@
 function [ I_out ] = im_compress( I_in, k, type )
 %IM_COMPRESS compresses an image using the DCT
-fprintf('Compressing Image by keeping %d coefficients from %s coefficients\n', k, type); 
+fprintf('Compressing Image using DCT by keeping %d coefficients from %s coefficients\n', k, type); 
 %% Initialize
 I_out = zeros(size(I_in));
 

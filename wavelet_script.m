@@ -3,17 +3,25 @@ N_ks = floor(rows*cols/step);
 errors = zeros(1, N_ks);
 
 for i= 1:N_ks
+    fprintf('Compressing Image using %s wavelet by keeping %d coefficients\n', wname, k); 
     % Coefficients to keep
     k = i*step;
     
     % Compress and decompress
     [C, S] = wavedec2(I, level, wname);
+    nz_before = nnz(C);
     C_hat = threshold(C, k);
     I_rec = waverec2(C_hat, S, wname);
+    nz_after = nnz(C_hat);
+    fprintf('Nonzero after:     %d\n', nz_after);
+    fprintf('Compression Ratio: %f%% \n', nz_after/nz_before*100);
+    fprintf('Space Savings:     %f%% \n\n', (1-nz_after/nz_before)*100);
     
     % Save image
+    if i <= 20 % an attempt to save space
     fname = strcat(img_name, '_', wname, '_', int2str(k));
     imwrite(uint8(I_rec), filename(image_dir, fname, 'tiff'), 'tiff');
+    end
     
     % Save relative L2 error
     errors(i) = rel_error(I, I_rec);
