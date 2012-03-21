@@ -1,5 +1,5 @@
 step = 1000;
-N_ks = floor(rows*cols/step);
+N_ks = 50;
 errors = zeros(1, N_ks);
 
 for i= 1:N_ks
@@ -18,10 +18,10 @@ for i= 1:N_ks
     fprintf('Space Savings:     %f%% \n\n', (1-nz_after/nz_before)*100);
     
     % Save image
-    if i <= 20 % an attempt to save space
+
     fname = strcat(img_name, '_', wname, '_', int2str(k));
     imwrite(uint8(I_rec), filename(image_dir, fname, 'tiff'), 'tiff');
-    end
+
     
     % Save relative L2 error
     errors(i) = rel_error(I, I_rec);

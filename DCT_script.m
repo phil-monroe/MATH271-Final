@@ -1,6 +1,6 @@
 %% DCT Compress all
 step = 1000;
-N_ks = floor(rows*cols/step);
+N_ks = 25;
 errors = zeros(1, N_ks);
 
 
@@ -13,10 +13,10 @@ for i= 1:N_ks
     I_rec_all = im_uncompress(I_comp_all);
     
     % Save image
-    if i <= 20 % an attempt to save space
+
     fname = strcat(img_name, '_', 'DCT_compress_all', '_', int2str(k));
     imwrite(uint8(I_rec_all), filename(image_dir, fname, 'tiff'), 'tiff');
-    end
+
     
     % Save relative L2 error
     errors(i) = rel_error(I, I_rec_all);
@@ -39,7 +39,7 @@ labels = strvcat(labels, 'DCT All');
 
 
 %% DCT Compress Blocks
-N_ks = 63;
+N_ks = 50;
 errors = zeros(1, N_ks);
 
 for i= 1:N_ks
@@ -52,10 +52,10 @@ for i= 1:N_ks
     
     % Save Image
     % Save image
-    if i <= 20 % an attempt to save space
+
     fname = strcat(img_name, '_', 'DCT_compress_block', '_', int2str(k));
     imwrite(uint8(I_rec_all), filename(image_dir, fname, 'tiff'), 'tiff');
-    end
+
     
     % Save relative L2 error
     errors(i) = rel_error(I, I_rec_all);
