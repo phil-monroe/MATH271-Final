@@ -1,36 +1,20 @@
+%% Initialize
 clear; clc; close all
 
 figures_dir = 'figures';
 image_dir   = 'images';
 
+files  = strvcat('zebra-camo.jpg');
 wnames = strvcat('haar', 'db8', 'sym8', 'coif5');
 labels = [];
 
-% Reserve fig 1 for combined results
-figure(1); 
 
-%% Load image
-image_file = 'zebra-camo.jpg';
-[img_name, img_ext] = parse_filename(image_file);
-I = load_image(image_file);
-[rows, cols] = size(I);
-% figure, imshow(I);
 
-%% Run DCT
-DCT_script
-
-%% Wavelet compress all
-for i=1:length(wnames(:,1))
-    wname = strtrim(wnames(i,:))
-    level = 3;
-    wavelet_script
+for img=1:length(files(:,1))
+    % Reserve fig 1 for combined results
+    figure(1);
+    image_file = strtrim(files(img,:));
+    fprintf('Testing %s\n', image_file);
+    compare_DCT2WT
+    close all;
 end
-
-%% Clean up combined plot
-legend(labels);
-axis('tight')
-
-% Save figure
-fname = strcat(img_name, '_combined');
-print(h, '-depsc2', '-tiff', filename(figures_dir, fname, 'eps'));
-
